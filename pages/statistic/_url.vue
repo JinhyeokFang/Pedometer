@@ -7,7 +7,7 @@
         </v-card-title>
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
         <v-card-text v-for="item of visitData" :key="item.name">
-          {{ item }}
+          {{ item.name }}일 {{ item.count }}번 방문
         </v-card-text>
       </v-card>
     </v-col>
@@ -35,10 +35,10 @@ export default {
     const lists = JSON.parse(Buffer.from(result.data, 'base64').toString());
     for (let rawData of lists) {
       const date = dayjs(rawData.createdAt);
-      const dataIndex = this.visitData.findIndex(item => item.name == `${date.year()}-${date.month()}-${date.date()}`);
+      const dataIndex = this.visitData.findIndex(item => item.name == `${date.year()}-${date.month() + 1}-${date.date()}`);
       if (dataIndex == -1) {
         this.visitData.push({
-          name: `${date.year()}-${date.month()}-${date.date()}`,
+          name: `${date.year()}-${date.month() + 1}-${date.date()}`,
           value: 1
         });
         continue;
