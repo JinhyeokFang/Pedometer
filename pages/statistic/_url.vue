@@ -6,9 +6,6 @@
           {{ decodedURL }}
         </v-card-title>
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-        <v-card-text v-for="item of visitData" :key="item.name">
-          {{ item.name }}일 {{ item.count }}번 방문
-        </v-card-text>
       </v-card>
     </v-col>
   </v-row>
@@ -46,27 +43,26 @@ export default {
       this.visitData[dataIndex].value += 1;
     }
 
-    // var xValues = ["title"];
-    // var yValues = [100];
-    // var barColors = ["blue"];
+    const xValues = [];
+    const yValues = [];
 
-    // new Chart("myChart", {
-    //   type: "bar",
-    //   data: {
-    //     labels: xValues,
-    //     datasets: [{
-    //       backgroundColor: barColors,
-    //       data: yValues
-    //     }]
-    //   },
-    //   options: {
-    //     legend: {display: false},
-    //     title: {
-    //       display: true,
-    //       text: "title"
-    //     }
-    //   }
-    // });
+    for (let data of this.visitData) {
+      xValues.push(data.name);
+      yValues.push(data.value);
+    }
+
+
+    new Chart("myChart", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          label: 'visit',
+          backgroundColor: '#ffffff',
+          data: yValues
+        }]
+      }
+    });
   }
 }
 </script>
