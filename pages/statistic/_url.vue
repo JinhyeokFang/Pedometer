@@ -46,27 +46,27 @@ export default {
       this.visitData[dataIndex].value += 1;
     }
 
-    var xValues = ["title"];
-    var yValues = [100];
-    var barColors = ["blue"];
+    // var xValues = ["title"];
+    // var yValues = [100];
+    // var barColors = ["blue"];
 
-    new Chart("myChart", {
-      type: "bar",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        legend: {display: false},
-        title: {
-          display: true,
-          text: "title"
-        }
-      }
-    });
+    // new Chart("myChart", {
+    //   type: "bar",
+    //   data: {
+    //     labels: xValues,
+    //     datasets: [{
+    //       backgroundColor: barColors,
+    //       data: yValues
+    //     }]
+    //   },
+    //   options: {
+    //     legend: {display: false},
+    //     title: {
+    //       display: true,
+    //       text: "title"
+    //     }
+    //   }
+    // });
   }
 }
 </script>

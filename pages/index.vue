@@ -59,7 +59,7 @@ export default {
   methods: {
     copy() {
       if (navigator.clipboard && window.isSecureContext)
-        navigator.clipboard.writeText(this.pedometerUrl());
+        navigator.clipboard.writeText(`![Pedometer](https://f9039c3zbh.execute-api.us-east-1.amazonaws.com/dev/count/${Buffer.from(this.url).toString('base64')}/image.svg)`);
       else
         alert('이 브라우저는 복사를 지원하지 않습니다.')
     }
