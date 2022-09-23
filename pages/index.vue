@@ -14,9 +14,18 @@
           v-model="url"
         ></v-text-field>
         <v-card-text>
+          README.md에 아래의 텍스트를 삽입하세요.
+        </v-card-text>
+        <v-card-text>
           {{ pedometerUrl }}
         </v-card-text>
         <v-card-actions>
+            <v-btn
+              nuxt
+              @click="copy"
+            >
+              텍스트 복사
+            </v-btn>
             <v-btn
               nuxt
               :to="statisticPageURL"
@@ -40,11 +49,19 @@ export default {
   computed: {
     pedometerUrl() {
       if (this.url == '')
-        return 'URL을 입력해주세요.'
-      return `https://f9039c3zbh.execute-api.us-east-1.amazonaws.com/dev/count/${Buffer.from(this.url).toString('base64')}/image.svg`;
+        return '![Pedometer]()'
+      return `![Pedometer](https://f9039c3zbh.execute-api.us-east-1.amazonaws.com/dev/count/${Buffer.from(this.url).toString('base64')}/image.svg)`;
     },
     statisticPageURL() {
       return '/statistic/' + Buffer.from(this.url).toString('base64');
+    }
+  },
+  methods: {
+    copy() {
+      if (navigator.clipboard && window.isSecureContext)
+        navigator.clipboard.writeText(this.pedometerUrl());
+      else
+        alert('이 브라우저는 복사를 지원하지 않습니다.')
     }
   }
 }

@@ -16,7 +16,7 @@
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; {{ new Date().getFullYear() }} <a href="http://github.com/jinhyeokfang/pedometer">Jin-hyeok Bang</a></span>
     </v-footer>
   </v-app>
 </template>
